@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, RegisterFormMentor
 from django.http import HttpResponse
 from .forms import EditProfileForm
 from .models import Student, Question, Exams, StudyMentor
@@ -80,6 +80,22 @@ def register(request):
         form = RegisterForm()
 
     return render(request, 'reg_form.html', {'form': form})
+
+
+
+def registerMentor(request):
+    if request.method == 'POST':
+        form = RegisterFormMentor(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request, "Successfully saved Mentor")
+            return  redirect('/loginm')
+    else:
+        form = RegisterFormMentor()
+
+    return render(request, 'regM_form.html', {'form': form})
+
 
 
 def login(request):
@@ -192,3 +208,4 @@ def mentor(request):
     else:
         form = LoginForm()
         return render(request, 'loginm.html', {'form': form})
+

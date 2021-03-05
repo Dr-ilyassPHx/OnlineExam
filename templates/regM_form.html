@@ -25,7 +25,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
         
-         :root {
+        :root {
             --blue: #007bff;
             --indigo: #6610f2;
             --purple: #6f42c1;
@@ -367,7 +367,7 @@
             -webkit-appearance: none;
         }
         
-         ::-webkit-file-upload-button {
+        ::-webkit-file-upload-button {
             font: inherit;
             -webkit-appearance: button;
         }
@@ -10411,7 +10411,7 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/home">Home</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About Me</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/loginm">Login</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">Login</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/register">Sign Up</a></li>
                 </ul>
             </div>
@@ -10430,31 +10430,21 @@
     </br>
     <!-- Masthead-->
 
+
+
     <div class="col-sm-6 col-md-offset-3">
         <div class="card2 card border-10 px-4 py-5">
             <div class="container">
-                {% if messages %}
-                <div class="messages">
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-
-                            {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
                 <div class="col-sm-6 col-md-offset-4">
-                    <h1 style="color:#00ffff">Login</h1>
-                    <form action="{% url 'loginm' %}" method="POST">
-                        {% csrf_token %} {{ form|crispy }}
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" type="submit" value="loginm">Login</button>
-                        <a href="/registerMentor" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Register</a>
+                    <h1 style="color:#00ffff">Sign Up</h1>
+                    <form action="{% url 'registerMentor' %}" method="POST">{% csrf_token %} {% csrf_token %} {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" type="submit" value="login">Submit</button>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
+
 
 
     <!-- SCRIPTS -->
@@ -10464,12 +10454,4 @@
     <script src="{% static 'js/jquery.parallax.js' %}"></script>
     <script src="{% static 'js/smoothscroll.js' %}"></script>
     <script src="{% static 'js/wow.min.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}">
-    </script>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
-    <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
-    <script type='text/javascript'></script>
-</body>
-
-</html>
+    <script src="{% static 'js/custom.js' %}"></script>

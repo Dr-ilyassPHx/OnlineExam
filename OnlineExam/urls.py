@@ -23,13 +23,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.home, name="home"),
     url(r'^login/$', views.login, name='login'),
-    url(r'^loginm/$', views.mentor, name='loginm'),
     url(r'^register/$', views.register, name='register'),
+
+    url(r'^loginm/$', views.mentor, name='loginm'),
+
+    url(r'^registerMentor/$', views.registerMentor, name='registerMentor'),
     url(r'^home/$', views.home, name='home'),
     url(r'^base/$', views.base, name='base'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^exam/$', views.exams, name='exam'),
+
     url(r'^mentor/$', views.mentor, name='mentor'),
+
     url(r'^startexam/$', views.start_exam, name='startexam'),
     url(r'^profile/(?P<user>\w+)/edit/$', views.profile_update, name='profile_form'),
     url(r'^report/$', views.report, name='report'),
