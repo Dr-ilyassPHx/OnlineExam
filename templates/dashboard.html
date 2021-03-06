@@ -322,6 +322,7 @@
                         <div class="col-lg-12 mb-4">
                             <div class="card card_border p-4">
                                 <div class="card-header chart-grid__header pl-0 pt-0">
+                                    <i class="lnr lnr-users"> </i>
                                     <strong>Registered Students</strong>
                                 </div>
                                 <div class="messaging">
@@ -343,8 +344,52 @@
                                                         <div class="chat_img"> <img src="{{ students.get_photo_url }}" height="55px" width="55px" alt="Alexander" class="img-fluid">
                                                         </div>
                                                         <div class="chat_ib">
-                                                            <h5>{{ students.name }} <span class="chat_date">1 hour ago</span></h5>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                                            <h5>{{ students.name }} <span class="chat_date">Study Level: {{ students.study_level }}</span></h5>
+                                                            <p> <i class="lnr lnr-phone"> </i> {{ students.phone }}<br> <i class="lnr lnr-inbox"> </i> {{ students.email }} </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //chatting -->
+
+                <!-- Display Mentors-->
+                <div class="data-tables">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card card_border p-4">
+                                <div class="card-header chart-grid__header pl-0 pt-0">
+                                    <i class="lnr lnr-eye"> </i>
+                                    <strong class="text-secondary number">Registered Mentors</strong>
+                                </div>
+                                <div class="messaging">
+                                    <div class="inbox_msg">
+                                        <div class="inbox_people">
+                                            <div class="headind_srch">
+                                                <div class="srch_bar">
+                                                    <div class="stylish-input-group">
+                                                        <input type="text" class="search-bar" placeholder="Search Chat">
+                                                        <span class="input-group-addon">
+                                                            <button type="button"> <i class="fa fa-search" aria-hidden="true"></i>
+                                                            </button>
+                                                        </span> </div>
+                                                </div>
+                                            </div>
+                                            <div class="inbox_chat">
+                                                {% for mentors in mentor %}
+                                                <div class="chat_list">
+                                                    <div class="chat_people">
+                                                        <div class="chat_ib">
+                                                            <h5><strong> <i class="lnr lnr-user"> </i>{{ mentors.FirstName }} {{ mentors.LastName }}</strong> <span class="chat_date">National ID :{{ mentors.national_ID }}</span></h5>
+                                                            <p>M. {{ mentors.FirstName }} is a {{ mentors.subject }} professor, <i class="lnr lnr-phone"> </i> {{ mentors.phone }}<br> <i class="lnr lnr-inbox"> </i> {{ mentors.email }} </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -358,7 +403,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- //chatting -->
+                <!--// Mentors-->
 
                 <!-- accordions -->
                 <div class="accordions">

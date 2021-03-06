@@ -136,8 +136,8 @@ def logins(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             staff = Staff.objects.all()
-
             student = Student.objects.all()
+            mentor = StudyMentor.objects.all()
             ur = form.cleaned_data['username']
             pd = form.cleaned_data['password']
             dbuser = Staff.objects.filter(user=ur, password=pd)
@@ -147,7 +147,7 @@ def logins(request):
                 request.session['z'] = ur
                 request.session.get_expiry_age()
                 instance = get_object_or_404(Staff, user=ur)
-                return render(request, 'dashboard.html', {'staff': staff,'student':student, 'ur': ur, 'instance': instance})
+                return render(request, 'dashboard.html', {'staff': staff,'student':student,'mentor':mentor, 'ur': ur, 'instance': instance})
     else:
         form = LoginForm()
         return render(request, 'logins.html', {'form': form})
