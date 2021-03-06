@@ -45,7 +45,7 @@ class Student(models.Model):
         if self.image and hasattr(self.image, 'url'):
             return self.image.url
         else:
-            return "/OnlineExamination/static/image/default.jpg"
+            return "/static/images/default.png"
 
 
 class Exams(models.Model):
