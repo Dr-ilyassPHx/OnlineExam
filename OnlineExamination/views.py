@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import LoginForm, RegisterForm, RegisterFormMentor,RegisterFormStaff
 from django.http import HttpResponse
 from .forms import EditProfileForm
-from .models import Student, Question, Exams, StudyMentor
+from .models import Student, Question, Exams, StudyMentor, Staff
 from django.contrib import messages
 
 
@@ -135,17 +135,17 @@ def logins(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            exam = Exams.objects.all()
+            staff = Staff.objects.all()
             ur = form.cleaned_data['username']
             pd = form.cleaned_data['password']
-            dbuser = Student.objects.filter(user=ur, password=pd)
+            dbuser = Staff.objects.filter(user=ur, password=pd)
             if not dbuser:
                 return HttpResponse('Login failed')
             else:
                 request.session['z'] = ur
                 request.session.get_expiry_age()
-                instance = get_object_or_404(Student, user=ur)
-                return render(request, 'examopt.html', {'exam': exam, 'ur': ur, 'instance': instance})
+                instance = get_object_or_404(Staff, user=ur)
+                return render(request, 'dashboard.html', {'staff': staff, 'ur': ur, 'instance': instance})
     else:
         form = LoginForm()
         return render(request, 'logins.html', {'form': form})

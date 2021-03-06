@@ -10445,7 +10445,7 @@
                 {% endif %}
                 <div class="col-sm-6 col-md-offset-4">
                     <h1 style="color:#00ffff">Staff - Login</h1>
-                    <form action="{% url 'login' %}" method="POST">
+                    <form action="{% url 'logins' %}" method="POST">
                         {% csrf_token %} {{ form|crispy }}
                         <button type="submit" class="btn btn-primary btn-lg btn-block" type="submit" value="login">Login</button>
                         <a href="/registerStaff" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Register</a>
