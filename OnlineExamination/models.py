@@ -40,6 +40,13 @@ class Student(models.Model):
     def __str__(self):
         return str(self.user)
 
+    @property
+    def get_photo_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return "/OnlineExamination/static/image/default.jpg"
+
 
 class Exams(models.Model):
     exam_name = models.CharField(max_length=50)
