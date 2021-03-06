@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import LoginForm, RegisterForm, RegisterFormMentor
+from .forms import LoginForm, RegisterForm, RegisterFormMentor,RegisterFormStaff
 from django.http import HttpResponse
 from .forms import EditProfileForm
 from .models import Student, Question, Exams, StudyMentor
@@ -96,6 +96,19 @@ def registerMentor(request):
 
     return render(request, 'regM_form.html', {'form': form})
 
+def registerStaff(request):
+    if request.method == 'POST':
+        form = RegisterFormStaff(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request, "Successfully saved Staff")
+            return  redirect('/logins')
+    else:
+        form = RegisterFormStaff()
+
+    return render(request, 'regS_form.html', {'form': form})
+
 
 
 def login(request):
@@ -116,6 +129,26 @@ def login(request):
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
+
+
+def logins(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            exam = Exams.objects.all()
+            ur = form.cleaned_data['username']
+            pd = form.cleaned_data['password']
+            dbuser = Student.objects.filter(user=ur, password=pd)
+            if not dbuser:
+                return HttpResponse('Login failed')
+            else:
+                request.session['z'] = ur
+                request.session.get_expiry_age()
+                instance = get_object_or_404(Student, user=ur)
+                return render(request, 'examopt.html', {'exam': exam, 'ur': ur, 'instance': instance})
+    else:
+        form = LoginForm()
+        return render(request, 'logins.html', {'form': form})
 
 
 def exams(request):

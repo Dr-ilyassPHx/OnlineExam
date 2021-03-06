@@ -23,11 +23,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.home, name="home"),
     url(r'^login/$', views.login, name='login'),
+    url(r'^logins/$', views.logins, name='logins'),
     url(r'^register/$', views.register, name='register'),
 
     url(r'^loginm/$', views.mentor, name='loginm'),
 
     url(r'^registerMentor/$', views.registerMentor, name='registerMentor'),
+    url(r'^registerStaff/$', views.registerStaff, name='registerStaff'),
+
     url(r'^home/$', views.home, name='home'),
     url(r'^base/$', views.base, name='base'),
     url(r'^profile/$', views.profile, name='profile'),

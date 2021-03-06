@@ -88,6 +88,19 @@ class StudyMentor(models.Model):
     #students = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.idmentor) 
+        return str(self.idmentor)
 
+
+
+class Staff(models.Model):
+    idstaff = models.AutoField(primary_key=True, unique=True)
+    user = models.CharField(max_length=20, unique=True)
+    FirstName = models.CharField(max_length=20, unique=True)
+    LastName = models.CharField(max_length=20)
+    email = models.EmailField()
+    password = models.CharField(max_length=20, default=1234)
+
+
+    def __str__(self):
+        return str(self.idmentor)
 
