@@ -10412,7 +10412,7 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About Me</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/loginm">Login</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/register">Sign Up</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/registerMentor">Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -10444,7 +10444,7 @@
                 </div>
                 {% endif %}
                 <div class="col-sm-6 col-md-offset-4">
-                    <h1 style="color:#00ffff">Login</h1>
+                    <h1 style="color:#00ffff">Mentor Login</h1>
                     <form action="{% url 'loginm' %}" method="POST">
                         {% csrf_token %} {{ form|crispy }}
                         <button type="submit" class="btn btn-primary btn-lg btn-block" type="submit" value="loginm">Login</button>

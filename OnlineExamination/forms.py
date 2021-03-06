@@ -18,7 +18,7 @@ class RegisterForm(forms.ModelForm):
 class RegisterFormMentor(forms.ModelForm):
     class Meta:
         model = StudyMentor
-        fields = ['user', 'password', 'FirstName','LastName', 'email', 'phone']
+        fields = ['user','email', 'password', 'FirstName','LastName','phone','national_ID','national_ID_image','subject','address']
         widgets = {'password': forms.PasswordInput()}
 
     def clean_email(self):
