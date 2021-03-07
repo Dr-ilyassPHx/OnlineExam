@@ -16,9 +16,6 @@ def upload_image(instance, filename):
     return "%s/%s" % (instance.user, filename)
 
 
-
-
-
 class Student(models.Model):
     user = models.CharField(primary_key=True, max_length=20, unique=True)
     name = models.CharField(max_length=20)
@@ -98,6 +95,13 @@ class StudyMentor(models.Model):
 
     def __str__(self):
         return str(self.idmentor)
+
+    @property
+    def get_photo_url(self):
+        if self.national_ID_image and hasattr(self.national_ID_image, 'url'):
+            return self.national_ID_image.url
+        else:
+            return "/static/images/default.png"
 
 
 

@@ -5,6 +5,8 @@ from .forms import EditProfileForm
 from .models import Student, Question, Exams, StudyMentor, Staff
 from django.contrib import messages
 from django.db.models import F
+from django.template import RequestContext
+
 
 
 
@@ -87,7 +89,7 @@ def register(request):
 
 def registerMentor(request):
     if request.method == 'POST':
-        form = RegisterFormMentor(request.POST)
+        form = RegisterFormMentor(request.POST, request.FILES or None)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
@@ -112,16 +114,37 @@ def registerStaff(request):
     return render(request, 'regS_form.html', {'form': form})
 
 
-def approved(request):
-    if request.method == 'POST':
-        id = request.POST['id']
-        mentor = StudyMentor.objects.filter(idmentor=id)
-        mentor.update(Approved= True)
+def treat_app(request, user=None):
 
-    return redirect('logins')
+    #mentor.update(Approved= True)
+    ur = request.GET['parameter']
+    instance = get_object_or_404(StudyMentor, user=user)
+    mentor = StudyMentor.objects.get(user=user)
+    # staff = Staff.objects.get(user=ur)
 
+    contex = {
+        'mentor'   :mentor,
+        'user': instance.user,
+        'firstname':mentor.FirstName,
+        'lastname' : mentor.LastName,
+        'phone'    : mentor.phone,
+        'email'    : mentor.email,
+        'n_id'     : mentor.national_ID,
+        'subject'  : mentor.subject,
+        'n_id_img' : mentor.get_photo_url,
+        'address'  : mentor.address,
+        'instance' : instance,
+        'ur'       : ur,
+    }
+    return render(request, 'approve.html' ,contex)
 
+def AccRej_app(request, user=None):
+    # instance = get_object_or_404(StudyMentor, user=user)
+    # mentor = StudyMentor.objects.all().filter(user=user)
+    # mentor.update(Approved= True)
+    messages.success(request, "Successfully Saved")
 
+    return  render(request, 'dashboard.html')
 
 
 def login(request):
@@ -148,6 +171,9 @@ def logins(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+
             staff = Staff.objects.all()
             student = Student.objects.all()
             mentor = StudyMentor.objects.all()
@@ -155,16 +181,36 @@ def logins(request):
             ur = form.cleaned_data['username']
             pd = form.cleaned_data['password']
             dbuser = Staff.objects.filter(user=ur, password=pd)
+
+            context = {
+            'staff' : staff,
+            'student' : student,
+            'mentor' : mentor,
+            'exam' : exam,
+            'ur' : ur,
+            'pd' : pd,
+            'dbuser' : dbuser,
+            }
+
             if not dbuser:
                 return HttpResponse('Login failed')
             else:
                 request.session['z'] = ur
                 request.session.get_expiry_age()
                 instance = get_object_or_404(Staff, user=ur)
-                return render(request, 'dashboard.html', {'staff': staff,'student':student,'mentor':mentor,'exam':exam, 'ur': ur, 'instance': instance})
+                response = dashboard(request, context)
+                # return render(request, 'dashboard.html', context)
+                return response
     else:
         form = LoginForm()
         return render(request, 'logins.html', {'form': form})
+
+
+def dashboard(request, newContext={}):
+    context = {}
+    context.update(newContext)
+    return render(request, "dashboard.html", context=context)
+
 
 
 def exams(request):

@@ -23,11 +23,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.home, name="home"),
     url(r'^login/$', views.login, name='login'),
-    url(r'^logins/$', views.logins, name='logins'),
+    url(r'^logins/?$', views.logins, name='logins'),
     url(r'^register/$', views.register, name='register'),
 
     url(r'^loginm/$', views.mentor, name='loginm'),
-    url(r'^approve/$', views.logins, name='approved'),
+    url(r'^logins/(?P<user>\w+)/edit/$', views.treat_app, name='application'),
+
+    url(r'^dashboard/$', views.AccRej_app, name='dashboard'),
 
     url(r'^registerMentor/$', views.registerMentor, name='registerMentor'),
     url(r'^registerStaff/$', views.registerStaff, name='registerStaff'),
