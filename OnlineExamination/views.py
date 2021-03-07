@@ -144,7 +144,24 @@ def AccRej_app(request, user=None):
     # mentor.update(Approved= True)
     messages.success(request, "Successfully Saved")
 
-    return  render(request, 'dashboard.html')
+    # staff = Staff.objects.all()
+
+    student = Student.objects.all()
+    mentor = StudyMentor.objects.all()
+    exam = Exams.objects.all()
+    ur = request.POST.get('staffid')
+    staff = Staff.objects.filter(user=ur)
+
+    context = {
+            'staff' : staff,
+            'student' : student,
+            'mentor' : mentor,
+            'exam' : exam,
+            'ur' : ur,
+            }
+
+    response = dashboard(request, context)
+    return  response  #render(request, 'dashboard.html')
 
 
 def login(request):
