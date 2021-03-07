@@ -53,6 +53,7 @@ class Exams(models.Model):
     no_of_ques = models.CharField(max_length=20)
     total_marks = models.CharField(max_length=20)
     year = models.CharField(null=True, max_length=4)
+    attempts = models.IntegerField(default=0)
     #time_duration = models.DurationField(default='00:00:00')
 
     def __str__(self):
@@ -92,6 +93,7 @@ class StudyMentor(models.Model):
     national_ID_image = models.ImageField(upload_to=upload_image, null=True, blank=True, height_field='height_field', width_field='width_field')
     address = models.CharField(max_length=200, blank=True)
     subject = models.TextField(max_length=500)
+    Approved = models.BooleanField(default=False)
     #students = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
 
     def __str__(self):

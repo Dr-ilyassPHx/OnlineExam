@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from .forms import EditProfileForm
 from .models import Student, Question, Exams, StudyMentor, Staff
 from django.contrib import messages
+from django.db.models import F
+
 
 
 def base(request):
@@ -110,6 +112,17 @@ def registerStaff(request):
     return render(request, 'regS_form.html', {'form': form})
 
 
+def approved(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        mentor = StudyMentor.objects.filter(idmentor=id)
+        mentor.update(Approved= True)
+
+    return redirect('logins')
+
+
+
+
 
 def login(request):
     if request.method == 'POST':
@@ -138,6 +151,7 @@ def logins(request):
             staff = Staff.objects.all()
             student = Student.objects.all()
             mentor = StudyMentor.objects.all()
+            exam = Exams.objects.all()
             ur = form.cleaned_data['username']
             pd = form.cleaned_data['password']
             dbuser = Staff.objects.filter(user=ur, password=pd)
@@ -147,7 +161,7 @@ def logins(request):
                 request.session['z'] = ur
                 request.session.get_expiry_age()
                 instance = get_object_or_404(Staff, user=ur)
-                return render(request, 'dashboard.html', {'staff': staff,'student':student,'mentor':mentor, 'ur': ur, 'instance': instance})
+                return render(request, 'dashboard.html', {'staff': staff,'student':student,'mentor':mentor,'exam':exam, 'ur': ur, 'instance': instance})
     else:
         form = LoginForm()
         return render(request, 'logins.html', {'form': form})
@@ -182,6 +196,8 @@ def start_exam(request):
         name = request.session['name']
         exam = Exams.objects.filter(exam_name=name)
         ques = Question.objects.all().filter(exam_name__in=exam)
+        exam.update(attempts= F('attempts')+1)
+
         return render(request, '1.html', {'ques': ques})
 
 

@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^register/$', views.register, name='register'),
 
     url(r'^loginm/$', views.mentor, name='loginm'),
+    url(r'^approve/$', views.logins, name='approved'),
 
     url(r'^registerMentor/$', views.registerMentor, name='registerMentor'),
     url(r'^registerStaff/$', views.registerStaff, name='registerStaff'),
