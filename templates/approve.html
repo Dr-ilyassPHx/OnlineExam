@@ -26,172 +26,31 @@ Author URL: http://w3layouts.com
         <!-- sidebar menu start -->
         <div class="sidebar-menu sticky-sidebar-menu">
 
-            <!-- logo start -->
-            <div class="logo">
-                <h1><a href="index.html">Collective</a></h1>
-            </div>
 
-            <!-- if logo is image enable this -->
-            <!-- image logo --
-    <div class="logo">
-      <a href="index.html">
-        <img src="image-path" alt="Your logo" title="Your logo" class="img-fluid" style="height:35px;" />
-      </a>
-    </div>
-    <!-- //image logo -->
+
 
             <div class="logo-icon text-center">
-                <a href="index.html" title="logo"><img src="assets/images/logo.png" alt="logo-icon"> </a>
+                <img src="{% static 'assets/images/logo.png' %}" alt="logo-icon">
             </div>
             <!-- //logo end -->
-
-            <div class="sidebar-menu-inner">
-
-                <!-- sidebar nav start -->
-                <ul class="nav nav-pills nav-stacked custom-nav">
-                    <li><a href="index.html"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
-                    </li>
-                    <li class="menu-list">
-                        <a href="#"><i class="fa fa-cogs"></i>
-                            <span>Elements <i class="lnr lnr-chevron-right"></i></span></a>
-                        <ul class="sub-menu-list">
-                            <li><a href="carousels.html">Carousels</a> </li>
-                            <li><a href="cards.html">Default cards</a> </li>
-                            <li><a href="people.html">People cards</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="pricing.html"><i class="fa fa-table"></i> <span>Pricing tables</span></a></li>
-                    <li><a href="blocks.html"><i class="fa fa-th"></i> <span>Content blocks</span></a></li>
-                    <li class="active"><a href="forms.html"><i class="fa fa-file-text"></i> <span>Forms</span></a></li>
-                </ul>
-                <!-- //sidebar nav end -->
-                <!-- toggle button start -->
-                <a class="toggle-btn">
-                    <i class="fa fa-angle-double-left menu-collapsed__left"><span>Collapse Sidebar</span></i>
-                    <i class="fa fa-angle-double-right menu-collapsed__right"></i>
-                </a>
-                <!-- //toggle button end -->
-            </div>
         </div>
         <!-- //sidebar menu end -->
         <!-- header-starts -->
         <div class="header sticky-header">
 
+
             <!-- notification menu start -->
             <div class="menu-right">
+
                 <div class="navbar user-panel-top">
-                    <div class="search-box">
-                        <form action="#search-results.html" method="get">
-                            <input class="search-input" placeholder="Search Here..." type="search" id="search">
-                            <button class="search-submit" value=""><span class="fa fa-search"></span></button>
-                        </form>
-                    </div>
+                    <h2 style="margin-right: 400px;">Django Online Exam</h2>
                     <div class="user-dropdown-details d-flex">
-                        <div class="profile_details_left">
-                            <ul class="nofitications-dropdown">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                                            class="fa fa-bell-o"></i><span class="badge blue">3</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>You have 3 new notifications</h3>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="grid">
-                                                <div class="user_img"><img src="assets/images/avatar1.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Johnson purchased template</p>
-                                                    <span>Just Now</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="odd">
-                                            <a href="#" class="grid">
-                                                <div class="user_img"><img src="assets/images/avatar2.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>New customer registered </p>
-                                                    <span>1 hour ago</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="grid">
-                                                <div class="user_img"><img src="assets/images/avatar3.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet </p>
-                                                    <span>2 hours ago</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="notification_bottom">
-                                                <a href="#all" class="bg-primary">See all notifications</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                                            class="fa fa-comment-o"></i><span class="badge blue">4</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>You have 4 new messages</h3>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="grid">
-                                                <div class="user_img"><img src="assets/images/avatar1.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Johnson purchased template</p>
-                                                    <span>Just Now</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="odd">
-                                            <a href="#" class="grid">
-                                                <div class="user_img"><img src="assets/images/avatar2.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>New customer registered </p>
-                                                    <span>1 hour ago</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="grid">
-                                                <div class="user_img"><img src="assets/images/avatar3.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet </p>
-                                                    <span>2 hours ago</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="grid">
-                                                <div class="user_img"><img src="assets/images/avatar1.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Johnson purchased template</p>
-                                                    <span>Just Now</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="notification_bottom">
-                                                <a href="#all" class="bg-primary">See all messages</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="profile_details">
                             <ul>
                                 <li class="dropdown profile_details_drop">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu3" aria-haspopup="true" aria-expanded="false">
                                         <div class="profile_img">
-                                            <img src="assets/images/profileimg.jpg" class="rounded-circle" alt="" />
+                                            <img src="{% static 'assets/images/profileimg.jpg' %}" class="rounded-circle" alt="" />
                                             <div class="user-active">
                                                 <span></span>
                                             </div>
@@ -199,14 +58,11 @@ Author URL: http://w3layouts.com
                                     </a>
                                     <ul class="dropdown-menu drp-mnu" aria-labelledby="dropdownMenu3">
                                         <li class="user-info">
-                                            <h5 class="user-name">John Deo</h5>
+                                            <h5 class="user-name">{{ ur }}</h5>
                                             <span class="status ml-2">Available</span>
                                         </li>
-                                        <li> <a href="#"><i class="lnr lnr-user"></i>My Profile</a> </li>
-                                        <li> <a href="#"><i class="lnr lnr-users"></i>1k Followers</a> </li>
-                                        <li> <a href="#"><i class="lnr lnr-cog"></i>Setting</a> </li>
-                                        <li> <a href="#"><i class="lnr lnr-heart"></i>100 Likes</a> </li>
-                                        <li class="logout"> <a href="#sign-up.html"><i class="fa fa-power-off"></i>
+
+                                        <li class="logout"> <a href="{% url 'logout' %}"><i class="fa fa-power-off"></i>
                                                 Logout</a> </li>
                                     </ul>
                                 </li>
@@ -215,6 +71,7 @@ Author URL: http://w3layouts.com
                     </div>
                 </div>
             </div>
+
             <!--notification menu end -->
         </div>
         <!-- //header-ends -->
@@ -223,23 +80,12 @@ Author URL: http://w3layouts.com
 
             <!-- content -->
             <div class="container-fluid content-top-gap">
-
-                <!-- breadcrumbs -->
-                <nav aria-label="breadcrumb" class="mb-4">
-                    <ol class="breadcrumb my-breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Forms</li>
-                    </ol>
-                </nav>
-                <!-- //breadcrumbs -->
                 <!-- forms -->
                 <section class="forms">
 
-
-                    <!-- forms 2 -->
                     {% block content %}
-                    <h1> Application of M. {{ firstname }} and {{ ur }} </h1>
-                    {% endblock %}
+                    <br>
+                    <h1 class="text-success number"> &nbsp; Application of <strong> M. {{ firstname }} </strong> </h1> <br> <br> {% endblock %}
 
                     <div class="card card_border py-2 mb-4">
                         <div class="card-body">
@@ -288,19 +134,15 @@ Author URL: http://w3layouts.com
                                 </div>
 
                                 <div class="form-bottom">
-                                    <a type="submit" href="/logins" class="btn btn-success">&nbsp; Accept &nbsp;</a> &nbsp; &nbsp; &nbsp;
-                                    <button type="submit" class="btn btn-outline-warning"> &nbsp; Reject
+                                    <button type="submit" name="accept" class="btn btn-success">&nbsp; Accept &nbsp;</button> &nbsp; &nbsp; &nbsp;
+                                    <button type="submit" name="reject" class="btn btn-outline-warning"> &nbsp; Reject
                                     &nbsp; </button>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-style mt-4">Sign in</button>
+
                             </form>
                         </div>
                     </div>
-                    <!-- //forms 2 -->
-
-
-
 
                 </section>
                 <!-- //forms -->

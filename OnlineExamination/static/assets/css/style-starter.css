@@ -15188,6 +15188,10 @@ ul.nofitications-dropdown li {
     transition: 0.3s ease;
 }
 
+.profile_details_left {
+    float: left;
+}
+
 .user-panel-top li a i:hover {
     opacity: 1;
     transition: 0.3s ease;

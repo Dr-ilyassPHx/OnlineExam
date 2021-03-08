@@ -141,25 +141,32 @@ def treat_app(request, user=None):
 
 def AccRej_app(request, user=None):
 
-    # tmentor = StudyMentor.objects.filter(user=user)
-    # tmentor.update(Approved=True)
     # messages.success(request, "Successfully Saved")
+    # instance = get_object_or_404(StudyMentor, user=muser)
 
-    # staff = Staff.objects.all()
-
-    student = Student.objects.all()
-    mentor = StudyMentor.objects.all()
-    exam = Exams.objects.all()
-    ur = request.POST.get('staffid')
     muser = request.POST.get('muser')
+    if request.POST:
+        if 'accept' in request.POST:
+            tmentor = StudyMentor.objects.filter(user=muser)
+            tmentor.update(Approved=True)
+        if 'reject' in request.POST:
+            StudyMentor.objects.get(user=muser).delete()
+            # tmentor.delete()
+        if 'delete' in request.POST:
+            StudyMentor.objects.get(user=muser).delete()
 
-    instance = get_object_or_404(StudyMentor, user=muser)
-    tmentor = StudyMentor.objects.filter(user=muser)
-    tmentor.update(Approved=True)
 
-    staff = Staff.objects.filter(user=ur)
 
-    context = {
+        student = Student.objects.all()
+        mentor = StudyMentor.objects.all()
+        exam = Exams.objects.all()
+        ur = request.POST.get('staffid')
+
+
+
+        staff = Staff.objects.filter(user=ur)
+
+        context = {
             'staff'   : staff,
             'student' : student,
             'mentor' : mentor,
@@ -167,8 +174,9 @@ def AccRej_app(request, user=None):
             'ur' : ur,
             }
 
-    response = dashboard(request, context)
-    return  response  #render(request, 'dashboard.html')
+        response = dashboard(request, context)
+        return  response  #render(request, 'dashboard.html')
+
 
 
 def login(request):
