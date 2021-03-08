@@ -327,8 +327,14 @@ def mentor(request):
             ur = form.cleaned_data['username']
             pd = form.cleaned_data['password']
             dbuser = StudyMentor.objects.filter(user=ur, password=pd)
+
             if not dbuser:
                 return HttpResponse('Incorrect user or password')
+
+            mentor_user = StudyMentor.objects.get(user=ur)
+            approved = mentor_user.Approved
+            if not approved:
+                return HttpResponse('Application not approved yet, please wait for staff to approve it comeback later..')
             else:
                 request.session['z'] = ur
                 request.session.get_expiry_age()
